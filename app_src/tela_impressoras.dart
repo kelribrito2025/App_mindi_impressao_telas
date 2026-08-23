@@ -70,22 +70,27 @@ class _TelaImpressorasState extends State<TelaImpressoras> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           HeaderVermelho(
-          child: Row(
-            children: [
-              const SizedBox(width: 40),
-              const Expanded(
-                child: Text('Impressoras',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.white,
-                        letterSpacing: -.3)),
+            // mesma altura do header da aba Inicio
+            child: SizedBox(
+              height: 46,
+              child: Row(
+                children: [
+                  const SizedBox(width: 40),
+                  const Expanded(
+                    child: Text('Impressoras',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white,
+                            letterSpacing: -.3)),
+                  ),
+                  BotaoDoHeader(
+                      icone: Ico.mais, aoTocar: () => _abrirEdicao()),
+                ],
               ),
-              BotaoDoHeader(icone: Ico.mais, aoTocar: () => _abrirEdicao()),
-            ],
+            ),
           ),
-        ),
           // o card da busca flutua sobre o header (padrão admin)
           Transform.translate(
             offset: const Offset(0, -44),

@@ -192,22 +192,26 @@ class _TelaAjustesState extends State<TelaAjustes> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const HeaderVermelho(
-          child: Row(
-            children: [
-              SizedBox(width: 40),
-              Expanded(
-                child: Text('Ajustes',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.white,
-                        letterSpacing: -.3)),
+            // mesma altura do header da aba Inicio
+            child: SizedBox(
+              height: 46,
+              child: Row(
+                children: [
+                  SizedBox(width: 40),
+                  Expanded(
+                    child: Text('Ajustes',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white,
+                            letterSpacing: -.3)),
+                  ),
+                  SizedBox(width: 40),
+                ],
               ),
-              SizedBox(width: 40),
-            ],
+            ),
           ),
-        ),
           // o card da API Key flutua sobre o header (padrão admin)
           Transform.translate(
             offset: const Offset(0, -44),
@@ -225,12 +229,20 @@ class _TelaAjustesState extends State<TelaAjustes> {
                         fundo: T.roxoSuave,
                         cor: T.roxo,
                         titulo: 'API Key',
-                        sub: 'Configurada · toque para alterar',
-                        direita: Badge2(
-                            texto: 'CONFIGURADA',
-                            fundo: T.greenSuave,
-                            borda: T.greenBorda,
-                            cor: T.greenEscuro),
+                        sub: 'Configurada',
+                        direita: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text('Alterar',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w800,
+                                    color: T.redDark)),
+                            const SizedBox(width: 3),
+                            Icon(Ico.avancar,
+                                size: 15, color: T.redDark),
+                          ],
+                        ),
                       ),
                     ),
                   ),

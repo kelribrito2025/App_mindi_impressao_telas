@@ -158,7 +158,7 @@ class _TelaInicioState extends State<TelaInicio> {
                       border: Border.all(
                           color: Colors.white.withOpacity(.45), width: 1.5),
                     ),
-                    child: const Text('DA',
+                    child: const Text('D',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 17,
