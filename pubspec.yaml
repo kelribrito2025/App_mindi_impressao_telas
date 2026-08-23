@@ -1,0 +1,19 @@
+name: printer_preview
+description: Previa visual do novo Mindi Printer (somente telas, sem backend)
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  shared_preferences: ^2.2.0
+  lucide_icons_flutter: ^3.1.15
+  google_fonts: ^6.2.1
+
+flutter:
+  uses-material-design: true
