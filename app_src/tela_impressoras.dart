@@ -60,9 +60,16 @@ class _TelaImpressorasState extends State<TelaImpressoras> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        HeaderVermelho(
+    // padrão admin: página inteira rola e o card da busca
+    // flutua por cima do header vermelho
+    return SingleChildScrollView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      padding: EdgeInsets.only(
+          bottom: 130 + MediaQuery.of(context).padding.bottom),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          HeaderVermelho(
           child: Row(
             children: [
               const SizedBox(width: 40),
@@ -79,20 +86,13 @@ class _TelaImpressorasState extends State<TelaImpressoras> {
             ],
           ),
         ),
-        Expanded(
-          child: Transform.translate(
+          // o card da busca flutua sobre o header (padrão admin)
+          Transform.translate(
             offset: const Offset(0, -44),
-            child: Container(
-              decoration: BoxDecoration(
-                color: T.bg,
-                borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(28)),
-              ),
-              padding: const EdgeInsets.fromLTRB(kSide, 18, kSide, 0),
-              child: ListView(
-                padding: EdgeInsets.only(
-                    bottom:
-                        120 + MediaQuery.viewPaddingOf(context).bottom),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: kSide),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   // ---- busca na rede ----
                   CardBranco(
@@ -183,8 +183,8 @@ class _TelaImpressorasState extends State<TelaImpressoras> {
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

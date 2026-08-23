@@ -182,9 +182,16 @@ class _TelaAjustesState extends State<TelaAjustes> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const HeaderVermelho(
+    // padrão admin: página inteira rola e o card da API Key
+    // flutua por cima do header vermelho
+    return SingleChildScrollView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      padding: EdgeInsets.only(
+          bottom: 130 + MediaQuery.of(context).padding.bottom),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const HeaderVermelho(
           child: Row(
             children: [
               SizedBox(width: 40),
@@ -201,22 +208,14 @@ class _TelaAjustesState extends State<TelaAjustes> {
             ],
           ),
         ),
-        Expanded(
-          child: Transform.translate(
+          // o card da API Key flutua sobre o header (padrão admin)
+          Transform.translate(
             offset: const Offset(0, -44),
-            child: Container(
-              decoration: BoxDecoration(
-                color: T.bg,
-                borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(28)),
-              ),
-              padding: const EdgeInsets.fromLTRB(kSide, 18, kSide, 0),
-              child: ListView(
-                padding: EdgeInsets.only(
-                    bottom:
-                        120 + MediaQuery.viewPaddingOf(context).bottom),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: kSide),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const TituloSecao('Conexão'),
                   AfundaAoTocar(
                     escala: .98,
                     onTap: _alterarChave,
@@ -308,8 +307,8 @@ class _TelaAjustesState extends State<TelaAjustes> {
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
